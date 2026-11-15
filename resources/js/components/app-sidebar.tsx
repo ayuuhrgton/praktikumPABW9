@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { ClipboardList, LayoutGrid, Users } from 'lucide-react';
+import { BookOpen, ClipboardList, LayoutGrid, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -18,11 +18,12 @@ import type { NavItem } from '@/types';
 export function AppSidebar() {
     const { isAdmin } = useSharedProps();
 
-    const mainNavItems: NavItem[] = [
-        { title: 'Dashboard', href: '/dashboard', icon: LayoutGrid },
-        { title: 'Pendaftaran', href: '/pendaftaran', icon: ClipboardList },
-        ...(isAdmin ? [{ title: 'Kelola User', href: '/admin/users', icon: Users }] : []),
-    ];
+        const mainNavItems: NavItem[] = [
+    { title: 'Dashboard', href: '/dashboard', icon: LayoutGrid },
+    { title: 'Buku', href: '/buku', icon: BookOpen },
+    { title: 'Peminjaman', href: '/peminjaman', icon: ClipboardList },
+    ...(isAdmin ? [{ title: 'Kelola User', href: '/admin/users', icon: Users }] : []),
+];
 
     return (
         <Sidebar collapsible="icon" variant="inset">

@@ -1,4 +1,6 @@
 {
     "UserManagement": true,
-    "Pendaftaran": true
+    "Pendaftaran": true,
+    "Buku": true,
+    "Peminjaman": true
 }

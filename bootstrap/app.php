@@ -25,8 +25,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ]);
 
     $middleware->alias([
-        'role' => EnsureUserHasRole::class,
-    ]);
+    'role' => EnsureUserHasRole::class,
+]);
 })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

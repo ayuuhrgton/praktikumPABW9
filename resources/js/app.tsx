@@ -12,25 +12,25 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 void createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const pages = import.meta.glob<any>([
-            './pages/**/*.tsx',
-            '../../Modules/*/resources/js/pages/**/*.tsx',
-        ]);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const pages = import.meta.glob<any>([
+        './pages/**/*.tsx',
+        '../../Modules/*/resources/js/pages/**/*.tsx',
+    ]);
 
-        // Halaman modul ditulis dengan format NamaModul::nama-halaman
-        if (name.includes('::')) {
-            const [module, page] = name.split('::');
+    // Halaman modul ditulis dengan format NamaModul::nama-halaman
+    if (name.includes('::')) {
+        const [module, page] = name.split('::');
 
-            return resolvePageComponent(
-                `../../Modules/${module}/resources/js/pages/${page}.tsx`,
-                pages,
-            );
-        }
+        return resolvePageComponent(
+            `../../Modules/${module}/resources/js/pages/${page}.tsx`,
+            pages,
+        );
+    }
 
-        return resolvePageComponent(`./pages/${name}.tsx`, pages);
-    },
-    layout: (name) => {
+    return resolvePageComponent(`./pages/${name}.tsx`, pages);
+},
+layout: (name) => {
     switch (true) {
         // Halaman ini membungkus dirinya sendiri dengan <AppLayout>
         case name === 'welcome' || name === 'dashboard' || name.includes('::'):
